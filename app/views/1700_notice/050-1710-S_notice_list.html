@@ -13,15 +13,16 @@
             <table class="table table-bordered table-condensed">
                 <thead>
                 <tr>
+                    <th>글번호</th>
                     <th>제목</th>
-                    <th>작성자</th>
                     <th>작성일</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat='item in pagedItems[currentPage]'>
+
+                    <td class="tstyle"><a href="#"> {{item.id}} </a></td>
                     <td><a href="#ym/notice/{{item.id}}"> {{item.title}} </a></td>
-                    <td class="tstyle"><a href="#"> {{item.author}} </a></td>
                     <td class="tstyle"><a href="#"> {{item.date}} </a></td>
                 </tr>
                 </tbody>
