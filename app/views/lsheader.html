@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="styles/common.css">
+
+
+<div class="head-wrapper">
+    <!--<div class="row clearfix">-->
+    <div class="container">
+        <div class="container">
+            <div class="col-md-12 column">
+                <div class="row clearfix">
+                    <div class="col-md-3 column">
+                        <a href="#/ym"> <img src="images/y_machine_logo_201px.png" alt="와이머신 로고"> </a>
+                    </div>
+                    <div class="col-md-9 column">
+                        <nav class="navbar nav-menu pull-right" role="navigation">
+
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                                <ul class="nav navbar-nav">
+                                    <li ng-repeat="menu in ymMenuList">
+                                        <a href="#lease/{{menu.url}}">{{menu.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix" ng-controller="loginStatueManager">
+        <div class="col-md-12 column">
+
+            <div class="row clearfix">
+
+                <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+                    <div class="container">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="#" class="top"> {{active_account}}{{active_greet}}</a>
+                                </li>
+                                <li>
+                                    <a href="http://localhost:9000/ym" class="top">공작기계</a>
+                                </li>
+                                <li>
+                                    <a href="/lease" class="top">금융리스</a>
+                                </li>
+                                <li>
+                                    <a href="#ym/sitemap/" class="top">Site map</a>
+                                </li>
+                                <li>
+                                    <a ng-if="active_account==''" href="#ym/login" class="top">{{login_button}}</a>
+                                    <a ng-if="active_account!=''" href="#ym/" class="top" ng-click="doLogoff()">{{login_button}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="navbar-sub">
+    <div class="container">
+        <div class="col-xs-12 column">
+            <ul class="list-inline pull-right">
+                <li>
+                    <a href="#">경로가 &gt;</a>
+                </li>
+                <li>
+                    <a href="#">이 곳에&gt;</a>
+                </li>
+                <li>
+                    <a href="#">매핑됩니다 </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
