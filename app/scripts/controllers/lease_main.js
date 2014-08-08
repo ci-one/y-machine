@@ -7,11 +7,11 @@ var mcModule = angular.module('lsApp')
             $scope.awesomeThings = awesomeThings;
             $scope.ymMenuList = [
                 {url:'main', name:'홈으로'}
-                , {url:'company/introduce', name:'리스금융'}
-                , {url:'product/new/list', name:'할부금융렌탈'}
-                , {url:'product/used/list', name:'담보및운전자금'}
-                , {url:'request/new', name:'컨설팅'}
-                , {url:'request/used', name:'고객문의'}
+                , {url:'lease/fir', name:'리스금융'}
+                , {url:'lease/sec', name:'할부금융렌탈'}
+                , {url:'lease/thi', name:'담보및운전자금'}
+                , {url:'lease/new', name:'컨설팅'}
+                , {url:'lease/fou'}
             ];
 
             $scope.ymTopMenuList = [

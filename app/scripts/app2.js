@@ -11,6 +11,16 @@ app.config(function ($routeProvider, $locationProvider) {
             redirectTo: '/lease'
         }).when('/lease', {
             templateUrl: '/views/2100_main/050-2100-M_main.html'
+        }).when('/lease/main', {
+            redirectTo: '/lease'
+        }).when('/lease/fir', {
+            templateUrl: '/views/2100_main/050-2100-M_main.html'
+        })
+        .when('/lease/thi', {
+            templateUrl: '/views/1200_company/050-1200-S_company.html'
+        })
+        .when('/lease/fou', {
+            templateUrl: '/views/1200_company/050-1200-S_company.html'
         })
 
 });
