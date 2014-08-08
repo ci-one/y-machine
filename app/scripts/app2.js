@@ -14,13 +14,23 @@ app.config(function ($routeProvider, $locationProvider) {
         }).when('/lease/main', {
             redirectTo: '/lease'
         }).when('/lease/fir', {
-            templateUrl: '/views/2100_main/050-2100-M_main.html'
-        })
-        .when('/lease/thi', {
+            templateUrl: '/views/5000_lease/050-5000-businessField1.html'
+        }) .when('/lease/thi', {
             templateUrl: '/views/1200_company/050-1200-S_company.html'
-        })
-        .when('/lease/fou', {
+        }) .when('/lease/fou', {
             templateUrl: '/views/1200_company/050-1200-S_company.html'
+        }) .when('/lease/introduce', {
+            templateUrl: '/views/5000_lease/050-5000-introduce.html'
+        }).when('/lease/direction', {
+            templateUrl: '/views/5000_lease/050-5100-directions.html'
+        }).when('/lease/business1', {
+            templateUrl: '/views/5000_lease/050-5200-businessfield1.html'
+        }).when('/lease/business2', {
+            templateUrl: '/views/5000_lease/050-5300-businessfield2.html'
+        }).when('/lease/business3', {
+            templateUrl: '/views/5000_lease/050-5400-businessfield3.html'
+        }).when('/lease/business4', {
+            templateUrl: '/views/5000_lease/050-5500-businessfield4.html'
         })
 
 });

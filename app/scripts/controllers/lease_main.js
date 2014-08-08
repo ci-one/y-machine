@@ -2,16 +2,15 @@
 
 
 var mcModule = angular.module('lsApp')
-    .controller('MainCtrl', function ($scope, $http) {
+    .controller('MainCtrl2', function ($scope, $http) {
         $http.get('/api/awesomeThings').success(function(awesomeThings) {
             $scope.awesomeThings = awesomeThings;
-            $scope.ymMenuList = [
-                {url:'main', name:'홈으로'}
-                , {url:'lease/fir', name:'리스금융'}
-                , {url:'lease/sec', name:'할부금융렌탈'}
-                , {url:'lease/thi', name:'담보및운전자금'}
-                , {url:'lease/new', name:'컨설팅'}
-                , {url:'lease/fou'}
+            $scope.lsMenuList = [
+                {url:'lease/introduce', name:'회사소개'}
+                , {url:'lease/business1', name:'리스금융'}
+                , {url:'lease/business2', name:'할부금융렌탈'}
+                , {url:'lease/business3', name:'담보및운전자금'}
+                , {url:'lease/business4', name:'컨설팅'}
             ];
 
             $scope.ymTopMenuList = [
