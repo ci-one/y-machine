@@ -3,7 +3,9 @@
  */
 'use strict';
 
-var app = angular.module('mcApp');
+var app = angular.module('mcApp', [
+    'ngRoute'
+])
 
 app.factory('noticeService', function ($http, $q, $upload) {
     var noticeService = {};
