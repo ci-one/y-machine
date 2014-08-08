@@ -2,7 +2,7 @@
  * Created by ci-one on 2014-08-04.
  */
 
-    /*
+
 var notice_items = [{
     id : 0,
     title : '공지사항 입니다',
@@ -160,7 +160,7 @@ function Notice_Detail($scope, $routeParams) {
     $scope.notice_items_sorting = $scope.notice_items.images.split('/');
 }
 
-*/
+/*
 'use strict';
 function listview($scope, $filter, items){
     $scope.noticetitle="제목테스트";
@@ -259,3 +259,4 @@ function listview($scope, $filter, items){
 
 }
 
+*/

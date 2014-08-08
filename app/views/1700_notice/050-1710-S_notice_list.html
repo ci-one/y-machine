@@ -5,8 +5,8 @@
 <script type="text/javascript" src="scripts/controllers/notice_temp_items.js">
 </script>
 
-<div class="container cont01" ng-app="listapp" > <!--ng-controller="Notice_Controller"//-->
-    <div class="row clearfix" ng-controller="listview">
+<div class="container cont01" ng-controller="Notice_Controller"><!-- ng-app="listapp"-->
+    <div class="row clearfix"<!-- ng-controller="listview" -->>
         <div class="col-md-offset-1 col-md-10 column col-md-offset-1">
             <div class=paginationcenter></div>
             <h3><img src="images/menu_icon_01.png"> 공지사항</h3>
@@ -25,7 +25,7 @@
                     <td class="tstyle"><a href="#"> {{item.date}} </a></td>
                 </tr>
                 <tr>
-                    <td><a href="#ym/notice/{{item.id}}"> {{noticetitle}} </a></td>
+                    <td><a href="#ym/notice/{{item.id}}"> {{item.content}} </a></td>
                     <td class="tstyle"><a href="#"> {{item.author}} </a></td>
                     <td class="tstyle"><a href="#"> {{item.date}} </a></td>
                 </tr>
