@@ -1,16 +1,19 @@
 /**
+ * Created by wealab04 on 2014-08-08.
+ */
+/**
  * Created by ci-one on 2014-08-04.
  */
 
 
 
 
-function Notice_Controller($scope, noticeService) {
+function newListCtrl($scope, newProductService) {
     $scope.itemsPerPage = 5;
     $scope.pagedItems = [];
     $scope.currentPage = 0;
     var getlist = function () {
-        noticeService.list().then(function (result) {
+        newProductService.list().then(function (result) {
             $scope.items = result;
         }).then(function () {
             var searchMatch = function (haystack, needle) {
@@ -67,18 +70,24 @@ function Notice_Controller($scope, noticeService) {
     }
     getlist();
 }
-function Notice_Detail($scope, $routeParams, noticeService) {
-    var i = $routeParams.id;
-    noticeService.one(i).then(function(result){
-        $scope.notice_items = result[0];
-        var images = $scope.notice_items.images.split('/');
+function nPro_Detail($scope, $routeParams, newProductService) {
+    var ai = $routeParams.id;
+    newProductService.one(ai).then(function(result){
+        $scope.item = result[0];
+        var images = $scope.item.images.split('/');
         var images2 = [];
         for(var i=0;i<images.length;i++){
             if(images[i]!=''){
                 images2.push(images[i]);
             }
         }
-        $scope.notice_items_sorting=images2;
+        $scope.item_sorting=images2;
+        newProductService.mlist(ai).then(function(result){
+            $scope.model_item=result;
+        })
+
+
+
     });
 
 }

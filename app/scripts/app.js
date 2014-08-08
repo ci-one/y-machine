@@ -29,19 +29,23 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: '/views/1200_company/050-1220-S_company_directions.html'
         })
         .when('/ym/product/new', {
-            templateUrl: '/views/1300_newProduct/050-1300-S_new.html'
+            templateUrl: '/views/1300_newProduct/050-1300-S_new.html',
+            controller: 'ctrlRead'
         })
         .when('/ym/product/new/list', {
-            templateUrl: '/views/1300_newProduct/050-1310-S_new_list.html'
+            templateUrl: '/views/1300_newProduct/050-1310-S_new_list.html',
+            controller: 'newListCtrl'
         })
         .when('/ym/product/new/write', {
-            templateUrl: '/views/1300_newProduct/050-1330-S_new_write.html'
+            templateUrl: '/views/1300_newProduct/050-1330-S_new_write.html',
+            controller: 'ctrlRead'
         })
         .when('/ym/product/new/category', {
             templateUrl: '/views/1300_newProduct/050-1340-S_new_category.html'
         })
         .when('/ym/product/new/:id', {
-            templateUrl: '/views/1300_newProduct/050-1320-S_new_detail.html'
+            templateUrl: '/views/1300_newProduct/050-1320-S_new_detail.html',
+            controller: 'nPro_Detail'
         })
         .when('/ym/product/used', {
             templateUrl: '/views/1400_usedProduct/050-1400-S_used.html'
@@ -96,7 +100,8 @@ app.config(function ($routeProvider, $locationProvider) {
         })
         .when('/ym/notice/:id', {
             templateUrl: '/views/1700_notice/050-1720-S_notice_detail.html'
-        }).when('/ym/notice/write/:id',{
+        })
+        .when('/ym/notice/write/:id',{
             templateUrl: '/views/1700_notice/050-1730-S_notice_write.html',
             controller:'Notice_Update'
         })
