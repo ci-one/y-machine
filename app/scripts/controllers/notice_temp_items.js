@@ -158,8 +158,15 @@ function Notice_Detail($scope, $routeParams, noticeService) {
     var i = $routeParams.id;
     noticeService.one(i).then(function(result){
         $scope.notice_items = result[0];
+        var images = $scope.notice_items.images.split('/');
+        var images2 = [];
+        for(var i=0;i<images.length;i++){
+            if(images[i]!=''){
+                images2.push(images[i]);
+            }
+        }
+        $scope.notice_items_sorting=images2;
     });
-    //$scope.notice_items_sorting = $scope.notice_items.images.split('/');
 
 }
 
@@ -178,12 +185,11 @@ function Notice_Write($scope, noticeService){
             });
             history.back();
         }else{
-            noticeService.noticeInsertF($filess).then(function(result){
+            noticeService.insertF($filess).then(function(result){
                 var title = $scope.item.title;
-                var writer = $scope.item.writer;
                 var content = $scope.item.content;
                 var images = result;
-                items.insert(title, writer, content, images).then(function(data){
+                noticeService.insert(title, content, images).then(function(data){
                     alert(data)
                 });
                 history.back();
@@ -192,4 +198,18 @@ function Notice_Write($scope, noticeService){
             });
         }
     };
+}
+function Notice_Update($scope, $routeParams, noticeService){
+    var i = $routeParams.id;
+    noticeService.one(i).then(function(result){
+        $scope.item = result[0];
+    });
+    $scope.insert = function(){
+        var title = $scope.item.title;
+        var content = $scope.item.content;
+        noticeService.update(i, title, content).then(function(data){
+            alert(data);
+            history.back();
+        })
+    }
 }

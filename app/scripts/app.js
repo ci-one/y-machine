@@ -91,10 +91,14 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: '/views/1700_notice/050-1710-S_notice_list.html'
         })
         .when('/ym/notice/write', {
-            templateUrl: '/views/1700_notice/050-1730-S_notice_write1.html'
+            templateUrl: '/views/1700_notice/050-1730-S_notice_write.html',
+            controller:'Notice_Write'
         })
         .when('/ym/notice/:id', {
             templateUrl: '/views/1700_notice/050-1720-S_notice_detail.html'
+        }).when('/ym/notice/write/:id',{
+            templateUrl: '/views/1700_notice/050-1730-S_notice_write.html',
+            controller:'Notice_Update'
         })
         .when('/ym/sitemap', {
             templateUrl: '/views/3100_sitemap/050-3100-S_sitemap.html'
@@ -142,8 +146,7 @@ app.factory('noticeService', function ($http, $q, $upload) {
     noticeService.insertF = function ($filess) {
         var deferred = $q.defer();
         var fname = '';
-
-        for ($file = 0; $file < $filess.length; $file++) {
+        var $file = $filess[0];
             $upload.upload({
                 url: '/noticeInsertF',
                 file: $file,
@@ -155,7 +158,6 @@ app.factory('noticeService', function ($http, $q, $upload) {
             }, function (data) {
                 alert(data.data);
             });
-        }
 
         return deferred.promise;
     };
