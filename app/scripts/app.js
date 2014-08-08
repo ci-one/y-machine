@@ -2,7 +2,7 @@
 
 angular.module('mcApp', [
     'ngRoute'
-    , 'ui.bootstrap'
+    , 'ui.bootstrap','angularFileUpload'
 ])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider

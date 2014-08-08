@@ -1,7 +1,9 @@
 /**
  * Created by wealab04 on 2014-08-05.
  */
-var app = angular.module("mcApp", ['angularFileUpload']);
+'use strict';
+
+var app = angular.module('mcApp');
 
 app.factory('noticeService', function ($http, $q, $upload) {
     var noticeService = {};

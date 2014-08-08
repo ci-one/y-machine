@@ -1,7 +1,7 @@
 'use strict';
 
 var pageApp = angular.module('pageApp', [
-    'ngRoute','angularFileUpload'
+    'ngRoute'
 ])
     .config(function ($routeProvider) {
         $routeProvider
