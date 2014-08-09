@@ -9,6 +9,7 @@ function Notice_Controller($scope, noticeService) {
     $scope.itemsPerPage = 5;
     $scope.pagedItems = [];
     $scope.currentPage = 0;
+    alert("1234");
     var getlist = function () {
         noticeService.list().then(function (result) {
             $scope.items = result;

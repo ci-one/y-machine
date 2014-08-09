@@ -1,5 +1,6 @@
 <link href="styles/sub_04.css" rel="stylesheet">
 <script src="scripts/controllers/newProCtrl.js"></script>
+
 <div class="row clearfix">
     <div class="col-sm-12 column">
         <div class="row clearfix">
@@ -26,31 +27,42 @@
 
                     </div>
                     <div class="row clearfix">
-                        <div class="col-md-10">
-                            <div class="pagination pull-right">
-                                <ul>
-                                    <li ng-class="{disabled: currentPage == 0}">
-                                        <a href ng-click="prevPage()">« Prev</a>
+                        <div class="col-md-10 column">
+                            <div class= "paginationcenter">
+                                <ul class="pagination" STYLE="WIDTH:3000PX;">
+                                    <li>
+                                        <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
                                     </li>
-                                    <li ng-repeat="n in range(pagedItems.length)"
-                                        ng-class="{active: n == currentPage}"
-                                        ng-click="setPage()">
-                                        <a href ng-bind="n + 1"></a>
+                                    <li>
+                                        <a href="#">1</a>
                                     </li>
-                                    <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
-                                        <a href ng-click="nextPage()">Next »</a>
+                                    <li>
+                                        <a href="#">2</a>
                                     </li>
+                                    <li>
+                                        <a href="#">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">4</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">5</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-2 column">
-                            <a href="#ym/product/new/write">
+                            <a href="#ym/product/used/write">
                                 <button type="button" class="btn btn-write pull-right">
-                                  장비등록
+                                    장비등록
                                 </button>
-                                </a>
-                            </div>
+                            </a>
                         </div>
+                    </div>
                     </div>
 
                 </div>

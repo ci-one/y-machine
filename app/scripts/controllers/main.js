@@ -6,8 +6,8 @@ var mcModule = angular.module('mcApp')
     $http.get('/api/awesomeThings').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
         $scope.ymMenuList = [
-            {url:'main', name:'홈으로'}
-            , {url:'company/introduce', name:'회사소개'}
+
+            {url:'company/introduce', name:'회사소개'}
             , {url:'product/new/list', name:'신제품소개'}
             , {url:'product/used/list', name:'중고제품'}
             , {url:'request/new', name:'고객문의'}

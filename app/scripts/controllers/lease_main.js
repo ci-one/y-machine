@@ -10,7 +10,7 @@ var mcModule = angular.module('lsApp')
                 , {url:'lease/business1', name:'리스금융'}
                 , {url:'lease/business2', name:'할부금융렌탈'}
                 , {url:'lease/business3', name:'담보및운전자금'}
-                , {url:'lease/business4', name:'컨설팅'}
+                , {url:'lease/business4', name:'컨설팅업무'}
             ];
 
             $scope.ymTopMenuList = [

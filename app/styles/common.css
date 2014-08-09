@@ -27,7 +27,7 @@ body{padding-top:70px;
 .head-wrapper {padding-bottom:0px; border-bottom:3px solid #ffcb08; overflow:hidden;}
 
 /*footer*/
-.footer-wrapper{margin-top:27px; border-top:3px solid #ffcb08; overflow: hidden;}
+.footer-wrapper{margin-top:0px; border-top:3px solid #ffcb08; overflow: hidden;}
 .breadcrumb {
 	background-color: #ffffff;
 	margin-top: 5px;
