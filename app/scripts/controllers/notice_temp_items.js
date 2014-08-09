@@ -9,7 +9,7 @@ function Notice_Controller($scope, noticeService) {
     $scope.itemsPerPage = 5;
     $scope.pagedItems = [];
     $scope.currentPage = 0;
-    alert("1234");
+
     var getlist = function () {
         noticeService.list().then(function (result) {
             $scope.items = result;
@@ -70,60 +70,80 @@ function Notice_Controller($scope, noticeService) {
 }
 function Notice_Detail($scope, $routeParams, noticeService) {
     var i = $routeParams.id;
-    noticeService.one(i).then(function(result){
+    noticeService.one(i).then(function (result) {
         $scope.notice_items = result[0];
         var images = $scope.notice_items.images.split('/');
         var images2 = [];
-        for(var i=0;i<images.length;i++){
-            if(images[i]!=''){
+        for (var i = 0; i < images.length; i++) {
+            if (images[i] != '') {
                 images2.push(images[i]);
             }
         }
-        $scope.notice_items_sorting=images2;
+        $scope.notice_items_sorting = images2;
     });
-
+    $scope.delete = function () {
+        var input = confirm("삭제 하시겠습니까?");
+        if (input) {
+            noticeService.delete(i);
+            alert("삭제되었습니다")
+            history.back();
+        } else {
+            alert("취소되었습니다")
+        }
+    }
 }
 
-function Notice_Write($scope, noticeService){
+function Notice_Write($scope, noticeService) {
     var $filess;
-    $scope.onFileSelect = function($files) {
+    $scope.onFileSelect = function ($files) {
         $filess = $files;
     };
-    $scope.insert = function(){
-        if($filess==null || $filess==''){
-            var title = $scope.item.title;
-            var content = $scope.item.content;
-            var images = 'no file';
-            noticeService.insert(title, content, images).then(function(data){
-                alert(data)
-            });
-            history.back();
-        }else{
-            noticeService.insertF($filess).then(function(result){
+    $scope.insert = function () {
+        var input = confirm("등록 하시겠습니까?");
+        if (input) {
+            if ($filess == null || $filess == '') {
                 var title = $scope.item.title;
                 var content = $scope.item.content;
-                var images = result;
-                noticeService.insert(title, content, images).then(function(data){
+                var images = 'no file';
+                noticeService.insert(title, content, images).then(function (data) {
                     alert(data)
                 });
                 history.back();
-            },function(){
-                alert('잘못된 등록이 발생하였습니다.')
-            });
+            } else {
+                noticeService.insertF($filess).then(function (result) {
+                    var title = $scope.item.title;
+                    var content = $scope.item.content;
+                    var images = result;
+                    noticeService.insert(title, content, images).then(function (data) {
+                        alert(data)
+                    });
+                    history.back();
+                }, function () {
+                    alert('잘못된 등록이 발생하였습니다.')
+                });
+            }
+        } else {
+            alert('등록이 취소되었습니다')
         }
     };
 }
-function Notice_Update($scope, $routeParams, noticeService){
+function Notice_Update($scope, $routeParams, noticeService) {
     var i = $routeParams.id;
-    noticeService.one(i).then(function(result){
+    noticeService.one(i).then(function (result) {
         $scope.item = result[0];
     });
-    $scope.insert = function(){
-        var title = $scope.item.title;
-        var content = $scope.item.content;
-        noticeService.update(i, title, content).then(function(data){
-            alert(data);
-            history.back();
-        })
+    $scope.insert = function () {
+        var input = confirm("수정 하시겠습니까?");
+        if (input) {
+            var title = $scope.item.title;
+            var content = $scope.item.content;
+            noticeService.update(i, title, content).then(function (data) {
+                alert(data);
+                history.back();
+            })
+        }else {
+            alert('수정입력이 취소되었습니다')
+        }
     }
 }
+

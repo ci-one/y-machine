@@ -217,7 +217,7 @@ app.factory('noticeService', function ($http, $q, $upload) {
         var deferred = $q.defer();
         $http({
             method: 'post',
-            url: '/deleteboard',
+            url: '/noticeDelete',
             data: {id: id}
         }).success(function (data) {
                 deferred.resolve(data);
