@@ -8,15 +8,18 @@
             <div class="col-md-12 column">
                 <div class="row clearfix">
                     <div class="col-md-3 column">
-                        <a href="#/ym"> <img src="images/y_machine_logo_201px.png" alt="와이머신 로고"> </a>
+                        <a href="/lease"> <img src="images/lease-img/logo.png" alt="와이머신 로고"> </a>
                     </div>
                     <div class="col-md-9 column">
                         <nav class="navbar nav-menu pull-right" role="navigation">
 
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                                 <ul class="nav navbar-nav">
-                                    <li ng-repeat="menu in ymMenuList">
-                                        <a href="#lease/{{menu.url}}">{{menu.name}}</a>
+                                    <li ng-repeat="menu in lsMenuList">
+                                        <a href="lease#/{{menu.url}}">{{menu.name}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#/ym/request/new">고객문의</a>
                                     </li>
                                 </ul>
                             </div>

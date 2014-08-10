@@ -22,7 +22,7 @@ body{padding-top:70px; padding-bottom:50px;}
 .head-wrapper {padding-bottom:0px; border-bottom:3px solid #ffcb08; margin-bottom:0px; overflow:hidden;}
 
 /*contents*/
-.contents {margin-top:30px;}
+.contents {margin-top:0px;}
 
 .contents h3{font-size:18px;font-weight:800;}
 .contents h3 a{color:#444; font-weight:800;}
@@ -46,7 +46,7 @@ body{padding-top:70px; padding-bottom:50px;}
 .contents dd {margin:3px 0; font-size:14px;}
 
 /*footer*/
-.footer-wrapper{margin-top:40px; border-top:3px solid #ffcb08;}
+.footer-wrapper{margin-top:0px; border-top:3px solid #ffcb08;}
 .breadcrumb {
 	background-color: #ffffff;
 	margin-top: 5px;
