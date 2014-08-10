@@ -5,7 +5,7 @@
 <div class="container cont01">
     <div class="row clearfix">
         <div class="col-md-offset-1 col-md-10 column col-md-offset-1">
-            <h3><img src="images/menu_icon_01.png"> 중고장비문의</h3>
+            <h3><img src="images/menu_icon_01.png"> 금융리스문의리스트</h3>
             <table class="table table-bordered table-condensed">
                 <thead>
                 <tr>
@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat='items in pagedItems[currentPage]'>
-                    <th class="tstyle"><a href="#ym/request/used/{{items.id}}"> {{items.title}}</a></th>
+                    <th class="tstyle"><a href="/lease/#/lease/ask/{{items.id}}"> {{items.title}}</a></th>
                     <td> {{items.comp}} </td>
                     <td class="tstyle">                            {{items.writer}}</td>
                 </tr>

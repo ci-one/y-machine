@@ -33,15 +33,15 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: '/views/5000_lease/050-5500-businessfield4.html'
         }).when('/lease/ask',{
             templateUrl:'/views/5000_lease/050-5600-leasequestion.html',
-            controller: 'leaseAskCtrl'
+            controller: 'leaseAskWriteCtrl'
         }).when('/lease/ask/write',{
-            templateUrl:'/views/5000_lease/050-5600-leasequestion.html',
+            templateUrl:'/views/5000_lease/050-5610-leasequestion_write.html',
             controller: 'leaseAskWriteCtrl'
         }).when('/lease/ask/list',{
-            templateUrl:'/views/5000_lease/050-5600-leasequestion.html',
+            templateUrl:'/views/5000_lease/050-5620-leasequestion_list.html',
             controller: 'leaseAskListCtrl'
         }).when('/lease/ask/:id',{
-            templateUrl:'/views/5000_lease/050-5600-leasequestion.html',
+            templateUrl:'/views/5000_lease/050-5630-leasequestion_detail.html',
             controller: 'leaseAskViewCtrl'
         })
 

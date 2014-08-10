@@ -6,11 +6,9 @@
 function leaseAskCtrl(){}
 
 function leaseAskListCtrl($scope, leaseQuestionService) {
-
     $scope.itemsPerPage = 5;
     $scope.pagedItems = [];
     $scope.currentPage = 0;
-
     var getlist = function () {
         leaseQuestionService.list().then(function(result){
             $scope.items = result;
