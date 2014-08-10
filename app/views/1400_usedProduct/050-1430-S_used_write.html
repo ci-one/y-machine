@@ -1,5 +1,5 @@
 <link href="styles/sub_06.css" rel="stylesheet">
-
+<script src="scripts/controllers/oldProCtrl.js"></script>
 <div class="container cont01">
     <div class="row clearfix">
         <div class="col-md-3 column">
@@ -18,58 +18,33 @@
                             <th> 장비명 </th>
                             <td>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control input-sm" id="#" />
+                                    <input type="text" class="form-control input-sm"  ng-model="item.name" />
                                 </div></td>
                             <th> 제조사 </th>
                             <td>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control input-sm" id="#" />
+                                    <input type="text" class="form-control input-sm" ng-model="item.company" />
                                 </div></td>
                         </tr>
                         <tr>
                             <th> 장비설명 </th>
                             <td colspan="3">
                                 <div class="col-sm-12">
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control" rows="3" ng-model="item.content"></textarea>
                                 </div></td>
                         </tr>
                         <tr>
                             <th> 첨부파일 </th>
                             <td colspan="3">
-                                <input type="file" id="#" />
+                                 <span ng-if="item.file==null"><input type="file"
+                                                                      ng-file-select="onFileSelect($files)"></span>
                             </td>
-                        </tr>
-                        <tr>
-                            <th> 파일리스트 </th>
-                            <td colspan="3"></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <!--규격 지정 -->
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <h3><img src="images/icon_02.png"> 규격지정</h3>
-                    <table class="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <th> 규격 명칭 </th>
-                            <td>
-                                <input type="text" class="form-control input-sm" id="#" />
-                            </td>
-                            <th> 규격 단위 </th>
-                            <td>
-                                <input type="text" class="form-control input-sm" id="#" />
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <button type="button" class="btn btn-write pull-right">
-                        규격 항목 추가
-                    </button>
-                </div>
-            </div>
+
             <!--모델 등록-->
             <div class="row clearfix">
                 <div class="col-md-12 column">
@@ -79,23 +54,34 @@
                         <tr>
                             <th> 모델명 </th>
                             <td colspan="3">
-                                <input type="text" class="form-control input-sm" id="#" />
+                                <input type="text" class="form-control input-sm" ng-model="modeint.name" />
                             </td>
                         </tr>
-                        <th> 제조일 </th>
-                        <td>
-                            <input type="date" class="form-control input-sm" id="#" />
-                        </td>
-                        <th> 가격 </th>
-                        <td>
-                            <input type="text" class="form-control input-sm" id="#" />
-                        </td>
+                        <tr>
+                            <th> 옵션 </th>
+                            <td colspan="3">
+                                <textarea class="form-control input-sm" rows="3" ng-model="modeint.option" />
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tbody ng-repeat="mode in model">
+                        <tr>
+                            <th> 모델명 </th>
+                            <td colspan="3">
+                                <pre>{{mode.name}}</pre>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> 옵션 </th>
+                            <td colspan="3">
+                                <pre>{{mode.option}}</pre>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-write pull-right">
-                        등록
-                    </button>
+                    <input type="button" class="btn btn-write" ng-click="modeladd()" value="모델추가" />
+                    <input type="button" class="btn btn-write" ng-click="insert()" value="등록" />
+
                 </div>
             </div>
         </div>

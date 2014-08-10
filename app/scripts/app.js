@@ -28,6 +28,8 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/ym/company/direction', {
             templateUrl: '/views/1200_company/050-1220-S_company_directions.html'
         })
+
+
         .when('/ym/product/new', {
             templateUrl: '/views/1300_newProduct/050-1300-S_new.html',
             controller: 'ctrlRead'
@@ -36,9 +38,13 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: '/views/1300_newProduct/050-1310-S_new_list.html',
             controller: 'newListCtrl'
         })
-        .when('/ym/product/new/write', {
+        .when('/ym/product/new/list/:id', {
+            templateUrl: '/views/1300_newProduct/050-1310-S_new_list.html',
+            controller: 'newListCtrl'
+        })
+        .when('/ym/product/new/write/:id', {
             templateUrl: '/views/1300_newProduct/050-1330-S_new_write.html',
-            controller: 'ctrlRead'
+            controller: 'newWriteCtrl'
         })
         .when('/ym/product/new/category', {
             templateUrl: '/views/1300_newProduct/050-1340-S_new_category.html'
@@ -47,47 +53,67 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: '/views/1300_newProduct/050-1320-S_new_detail.html',
             controller: 'nPro_Detail'
         })
+
+
         .when('/ym/product/used', {
             templateUrl: '/views/1400_usedProduct/050-1400-S_used.html'
         })
         .when('/ym/product/used/list', {
-            templateUrl: '/views/1400_usedProduct/050-1410-S_used_list.html'
+            templateUrl: '/views/1400_usedProduct/050-1410-S_used_list.html',
+            controller: 'oldListCtrl'
         })
-        .when('/ym/product/used/write', {
-            templateUrl: '/views/1400_usedProduct/050-1430-S_used_write.html'
+        .when('/ym/product/used/list/:id', {
+            templateUrl: '/views/1400_usedProduct/050-1410-S_used_list.html',
+            controller: 'oldListCtrl'
+        })
+        .when('/ym/product/used/write/:id', {
+            templateUrl: '/views/1400_usedProduct/050-1430-S_used_write.html',
+            controller: 'oldWriteCtrl'
         })
         .when('/ym/product/used/category', {
             templateUrl: '/views/1400_usedProduct/050-1440-S_used_category.html'
         })
         .when('/ym/product/used/:id', {
-            templateUrl: '/views/1400_usedProduct/050-1420-S_used_detail.html'
+            templateUrl: '/views/1400_usedProduct/050-1420-S_used_detail.html',
+            controller: 'oPro_Detail'
         })
+
+
         .when('/ym/request/new', {
-            templateUrl: '/views/1500_request/050-1500-S_request.html'
+            templateUrl: '/views/1500_request/050-1500-S_request.html',
+            controller: 'askWriteCtrl'
         })
         .when('/ym/request/new/write', {
-            templateUrl: '/views/1500_request/050-1510-S_request_write.html'
+            templateUrl: '/views/1500_request/050-1510-S_request_write.html',
+            controller: 'askWriteCtrl'
         })
         .when('/ym/request/new/list', {
-            templateUrl: '/views/1500_request/050-1520-S_request_list.html'
+            templateUrl: '/views/1500_request/050-1520-S_request_list.html',
+            controller: 'askListCtrl'
         })
         .when('/ym/request/new/:id', {
-            templateUrl: '/views/1500_request/050-1530-S_request_detail.html'
+            templateUrl: '/views/1500_request/050-1530-S_request_detail.html',
+            controller: 'askDetailCtrl'
         })
         .when('/ym/request/used', {
-            templateUrl: '/views/1600_requestUsed/050-1600-S_request_used.html'
+            templateUrl: '/views/1600_requestUsed/050-1600-S_request_used.html',
+            controller: 'usedAskWriteCtrl'
         })
         .when('/ym/request/used/write', {
-            templateUrl: '/views/1600_requestUsed/050-1610-S_request_used_write.html'
+            templateUrl: '/views/1600_requestUsed/050-1610-S_request_used_write.html',
+            controller: 'usedAskWriteCtrl'
         })
         .when('/ym/request/used/list', {
             templateUrl: '/views/1600_requestUsed/050-1620-S_request_used_list.html',
-            controller: 'ctrlRead'
+            controller: 'usedAskListCtrl'
         })
         .when('/ym/request/used/:id', {
             templateUrl: '/views/1600_requestUsed/050-1630-S_request_used_detail.html',
-            controller: 'ctrlDetail'
+            controller: 'usedAskDetailCtrl'
         })
+
+
+
         .when('/ym/notice', {
             templateUrl: '/views/1700_notice/050-1700-S_notice.html'
         })
@@ -96,14 +122,14 @@ app.config(function ($routeProvider, $locationProvider) {
         })
         .when('/ym/notice/write', {
             templateUrl: '/views/1700_notice/050-1730-S_notice_write.html',
-            controller:'Notice_Write'
+            controller: 'Notice_Write'
         })
         .when('/ym/notice/:id', {
             templateUrl: '/views/1700_notice/050-1720-S_notice_detail.html'
         })
-        .when('/ym/notice/write/:id',{
+        .when('/ym/notice/write/:id', {
             templateUrl: '/views/1700_notice/050-1730-S_notice_write.html',
-            controller:'Notice_Update'
+            controller: 'Notice_Update'
         })
         .when('/ym/sitemap', {
             templateUrl: '/views/3100_sitemap/050-3100-S_sitemap.html'
@@ -152,17 +178,17 @@ app.factory('noticeService', function ($http, $q, $upload) {
         var deferred = $q.defer();
         var fname = '';
         var $file = $filess[0];
-            $upload.upload({
-                url: '/noticeInsertF',
-                file: $file,
-                progress: function (e) {
-                }
-            }).then(function (data) {
-                fname += data.data + '/';
-                deferred.resolve(fname);
-            }, function (data) {
-                alert(data.data);
-            });
+        $upload.upload({
+            url: '/noticeInsertF',
+            file: $file,
+            progress: function (e) {
+            }
+        }).then(function (data) {
+            fname += data.data + '/';
+            deferred.resolve(fname);
+        }, function (data) {
+            alert(data.data);
+        });
 
         return deferred.promise;
     };
@@ -231,12 +257,24 @@ app.factory('noticeService', function ($http, $q, $upload) {
 
 app.factory('newProductService', function ($http, $q, $upload) {
     var newProductService = {};
-    newProductService.list = function () {
+    newProductService.list = function (select) {
         var deferred = $q.defer();
-
         $http({
                 method: 'post',
-                url: '/nitemList'
+                url: '/nitemList',
+                data: {select: select}
+            }
+        ).success(function (data) {
+                deferred.resolve(data.sending);
+            }
+        );
+        return deferred.promise;
+    };
+    newProductService.listall = function () {
+        var deferred = $q.defer();
+        $http({
+                method: 'post',
+                url: '/nitemListall'
             }
         ).success(function (data) {
                 deferred.resolve(data.sending);
@@ -285,37 +323,48 @@ app.factory('newProductService', function ($http, $q, $upload) {
         );
         return deferred.promise;
     };
-    newProductService.insert = function (name, comp, content, images) {
+
+    newProductService.insert = function (name, comp, content, images, ai) {
         var deferred = $q.defer();
         $http({
             method: 'post',
             url: '/nitemInsert',
-            data: { name: name, comp: comp, content: content, images: images }
+            data: { name: name, comp: comp, content: content, images: images, select: ai }
         }).success(function (data) {
                 deferred.resolve(data);
             }
         );
         return deferred.promise;
     };
-
+    newProductService.onefor = function (name, company) {
+        var deferred = $q.defer();
+        $http({
+                method: 'post',
+                url: '/nitemOneFor',
+                data: {name: name, comp: company}
+            }
+        ).success(function (data) {
+                deferred.resolve(data.sending);
+            }
+        );
+        return deferred.promise;
+    };
 
     newProductService.insertF = function ($filess) {
         var deferred = $q.defer();
         var fname = '';
-
-        for ($file = 0; $file < $filess.length; $file++) {
-            $upload.upload({
-                url: '/nitemInsertF',
-                file: $file,
-                progress: function (e) {
-                }
-            }).then(function (data) {
-                fname += data.data + '/';
-                deferred.resolve(fname);
-            }, function (data) {
-                alert(data.data);
-            });
-        }
+        var $file = $filess[0];
+        $upload.upload({
+            url: '/nitemInsertF',
+            file: $file,
+            progress: function (e) {
+            }
+        }).then(function (data) {
+            fname += data.data + '/';
+            deferred.resolve(fname);
+        }, function (data) {
+            alert(data.data);
+        });
 
         return deferred.promise;
     };
@@ -324,16 +373,17 @@ app.factory('newProductService', function ($http, $q, $upload) {
     newProductService.deleteF = function (images) {
         var image = images.split('/');
         var deferred = $q.defer();
-
-        for (file = 0; file < image.length; file++) {
-            $http({
-                method: 'post',
-                url: '/nitemDeleteF',
-                data: {file: file}
-            }).success(function (data) {
-                    deferred.resolve(data);
-                }
-            );
+        for (var file = 0; file < image.length; file++) {
+            if (image[file] != '') {
+                $http({
+                    method: 'post',
+                    url: '/nitemDeleteF',
+                    data: {file: image[file]}
+                }).success(function (data) {
+                        deferred.resolve(data);
+                    }
+                );
+            }
         }
 
         return deferred.promise;
@@ -367,14 +417,28 @@ app.factory('newProductService', function ($http, $q, $upload) {
     return newProductService;
 });
 
+
 app.factory('oldProductService', function ($http, $q, $upload) {
     var oldProductService = {};
-    oldProductService.list = function () {
+    oldProductService.list = function (select) {
         var deferred = $q.defer();
 
         $http({
                 method: 'post',
-                url: '/oitemList'
+                url: '/oitemList',
+                data: {select: select}
+            }
+        ).success(function (data) {
+                deferred.resolve(data.sending);
+            }
+        );
+        return deferred.promise;
+    };
+    oldProductService.listall = function () {
+        var deferred = $q.defer();
+        $http({
+                method: 'post',
+                url: '/oitemListall'
             }
         ).success(function (data) {
                 deferred.resolve(data.sending);
@@ -423,37 +487,47 @@ app.factory('oldProductService', function ($http, $q, $upload) {
         );
         return deferred.promise;
     };
-    oldProductService.insert = function (name, comp, content, images) {
+    oldProductService.insert = function (name, comp, content, images, ai) {
         var deferred = $q.defer();
         $http({
             method: 'post',
             url: '/oitemInsert',
-            data: { name: name, comp: comp, content: content, images: images }
+            data: { name: name, comp: comp, content: content, images: images, select: ai }
         }).success(function (data) {
                 deferred.resolve(data);
             }
         );
         return deferred.promise;
     };
-
+    oldProductService.onefor = function (name, company) {
+        var deferred = $q.defer();
+        $http({
+                method: 'post',
+                url: '/oitemOneFor',
+                data: {name: name, comp: company}
+            }
+        ).success(function (data) {
+                deferred.resolve(data.sending);
+            }
+        );
+        return deferred.promise;
+    };
 
     oldProductService.insertF = function ($filess) {
         var deferred = $q.defer();
         var fname = '';
-
-        for ($file = 0; $file < $filess.length; $file++) {
-            $upload.upload({
-                url: '/oitemInsertF',
-                file: $file,
-                progress: function (e) {
-                }
-            }).then(function (data) {
-                fname += data.data + '/';
-                deferred.resolve(fname);
-            }, function (data) {
-                alert(data.data);
-            });
-        }
+        var $file = $filess[0];
+        $upload.upload({
+            url: '/oitemInsertF',
+            file: $file,
+            progress: function (e) {
+            }
+        }).then(function (data) {
+            fname += data.data + '/';
+            deferred.resolve(fname);
+        }, function (data) {
+            alert(data.data);
+        });
 
         return deferred.promise;
     };
@@ -462,16 +536,17 @@ app.factory('oldProductService', function ($http, $q, $upload) {
     oldProductService.deleteF = function (images) {
         var image = images.split('/');
         var deferred = $q.defer();
-
-        for (file = 0; file < image.length; file++) {
-            $http({
-                method: 'post',
-                url: '/oitemDeleteF',
-                data: {file: file}
-            }).success(function (data) {
-                    deferred.resolve(data);
-                }
-            );
+        for (var file = 0; file < image.length; file++) {
+            if (image[file] != '') {
+                $http({
+                    method: 'post',
+                    url: '/oitemDeleteF',
+                    data: {file: image[file]}
+                }).success(function (data) {
+                        deferred.resolve(data);
+                    }
+                );
+            }
         }
 
         return deferred.promise;
@@ -538,31 +613,29 @@ app.factory('machineQuestionService', function ($http, $q, $upload) {
     machineQuestionService.insertF = function ($filess) {
         var deferred = $q.defer();
         var fname = '';
-
-        for ($file = 0; $file < $filess.length; $file++) {
-            $upload.upload({
-                url: '/mcqInsertF',
-                file: $file,
-                progress: function (e) {
-                }
-            }).then(function (data) {
-                fname += data.data + '/';
-                deferred.resolve(fname);
-            }, function (data) {
-                alert(data.data);
-            });
-        }
+        var $file = $filess[0];
+        $upload.upload({
+            url: '/mcqInsertF',
+            file: $file,
+            progress: function (e) {
+            }
+        }).then(function (data) {
+            fname += data.data + '/';
+            deferred.resolve(fname);
+        }, function (data) {
+            alert(data.data);
+        });
 
         return deferred.promise;
     };
 
 
-    machineQuestionService.insert = function (title, writer, comp, contact, email, content, images) {
+    machineQuestionService.insert = function (item, images) {
         var deferred = $q.defer();
         $http({
             method: 'post',
             url: '/mcqInsert',
-            data: {title: title, writer: writer, comp: comp, contact: contact, email: email, content: content, images: images}
+            data: {title: item.title, writer: item.writer, comp: item.comp, contact: item.contact, email: item.email, content: item.content, images: images}
         }).success(function (data) {
                 deferred.resolve(data);
             }
@@ -572,73 +645,6 @@ app.factory('machineQuestionService', function ($http, $q, $upload) {
     return machineQuestionService;
 });
 
-app.factory('leaseQuestionService', function ($http, $q, $upload) {
-    var leaseQuestionService = {};
-    leaseQuestionService.list = function () {
-        var deferred = $q.defer();
-
-        $http({
-                method: 'post',
-                url: '/lsqList'
-            }
-        ).success(function (data) {
-                deferred.resolve(data.sending);
-            }
-        );
-        return deferred.promise;
-    };
-
-    leaseQuestionService.one = function (id) {
-        var deferred = $q.defer();
-        $http({
-                method: 'post',
-                url: '/lsqOne',
-                data: {id: id}
-            }
-        ).success(function (data) {
-                deferred.resolve(data.sending);
-            }
-        );
-        return deferred.promise;
-    };
-
-
-    leaseQuestionService.insertF = function ($filess) {
-        var deferred = $q.defer();
-        var fname = '';
-
-        for ($file = 0; $file < $filess.length; $file++) {
-            $upload.upload({
-                url: '/lsqInsertF',
-                file: $file,
-                progress: function (e) {
-                }
-            }).then(function (data) {
-                fname += data.data + '/';
-                deferred.resolve(fname);
-            }, function (data) {
-                alert(data.data);
-            });
-        }
-
-        return deferred.promise;
-    };
-
-
-    leaseQuestionService.insert = function (title, writer, comp, contact, email, content, images) {
-        var deferred = $q.defer();
-        $http({
-            method: 'post',
-            url: '/lsqInsert',
-            data: {title: title, writer: writer, comp: comp, contact: contact, email: email, content: content, images: images}
-        }).success(function (data) {
-                deferred.resolve(data);
-            }
-        );
-        return deferred.promise;
-    };
-    return leaseQuestionService;
-});
 
 app.factory('customerService', function ($http, $q, $upload) {
     var customerService = {};
@@ -669,36 +675,26 @@ app.factory('customerService', function ($http, $q, $upload) {
         );
         return deferred.promise;
     };
-
-
-    customerService.insertF = function ($filess) {
+    customerService.delete = function (id) {
         var deferred = $q.defer();
-        var fname = '';
-
-        for ($file = 0; $file < $filess.length; $file++) {
-            $upload.upload({
-                url: '/customerInsertF',
-                file: $file,
-                progress: function (e) {
-                }
-            }).then(function (data) {
-                fname += data.data + '/';
-                deferred.resolve(fname);
-            }, function (data) {
-                alert(data.data);
-            });
-        }
-
+        $http({
+                method: 'post',
+                url: '/customerdelete',
+                data: {id: id}
+            }
+        ).success(function (data) {
+                deferred.resolve(data.sending);
+            }
+        );
         return deferred.promise;
     };
 
-
-    customerService.insert = function (title, writer, comp, contact, email, content, images) {
+    customerService.insert = function (item) {
         var deferred = $q.defer();
         $http({
             method: 'post',
             url: '/customerInsert',
-            data: {title: title, writer: writer, comp: comp, contact: contact, email: email, content: content, images: images}
+            data: {title: item.title, writer: item.writer, comp: item.comp, contact: item.contact, email: item.email, content: item.content}
         }).success(function (data) {
                 deferred.resolve(data);
             }
@@ -726,7 +722,7 @@ app.factory('loginService', function ($http, $q) {
     }
 });
 
-app.factory('oldRecommService', function ($http, $q, $upload) {
+app.factory('oldRecommService', function ($http, $q) {
     var oldRecommService = {};
     oldRecommService.list = function () {
         var deferred = $q.defer();
@@ -737,6 +733,19 @@ app.factory('oldRecommService', function ($http, $q, $upload) {
             }
         ).success(function (data) {
                 deferred.resolve(data.sending);
+            }
+        );
+        return deferred.promise;
+    };
+    oldRecommService.chk = function (itemId) {
+        var deferred = $q.defer();
+        $http({
+                method: 'post',
+                url: '/oitemChk',
+                data: {itemId: itemId }
+            }
+        ).success(function (data) {
+                deferred.resolve(data);
             }
         );
         return deferred.promise;

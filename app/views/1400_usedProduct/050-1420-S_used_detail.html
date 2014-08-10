@@ -1,5 +1,5 @@
 <link href="styles/sub_04.css" rel="stylesheet">
-
+<script src="scripts/controllers/oldProCtrl.js"></script>
 
 <div class="row clearfix">
     <div class="col-sm-12 column">
@@ -12,6 +12,74 @@
                 <!-- contents -->
                 <div class="col-md-12 column">
 
+                    <!--신제품 리스트-->
+                    <div class="row clearfix">
+                        <div class="col-md-12 column">
+                            <h3>{{item.name}}</h3>
+                            <!--상세페이지-->
+                            <h4><img src="images/menu_icon_01.png"> 장비이미지 </h4>
+                            <div ng-repeat="item in item_sorting">
+                                <div class="item">
+                                    <img alt="" ng-src="images/oldPro/{{item}}" style="width:847px; height:387px;"/>
+                                </div>
+                            </div>
+                            <h4><img src="images/menu_icon_01.png"> 모델리스트 </h4>
+
+                            <div class="panel-group" id="panel-780726" ng-repeat="model in model_item">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <a class="panel-title collapsed" data-toggle="collapse"
+                                           data-parent="#panel-780726" href="ym/product/used/#{{model.id}}">{{model.name}}</a>
+                                    </div>
+                                    <div id="{{model.id}}" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                <tr>
+                                                    <th> 모델명 </th>
+                                                    <td colspan="3">
+                                                        <pre>{{model.name}}</pre>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th> 옵션 </th>
+                                                    <td colspan="3">
+                                                        <pre>{{model.option}}</pre>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>　</p>
+                            <div class="panel-group" id="settingrecomm">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <a class="panel-title collapsed" data-toggle="collapse"
+                                           data-parent="#settingrecomm" href="ym/product/used/#ad">추천상품 등록</a>
+                                    </div>
+                                    <div id="ad" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                <tr ng-repeat="recom in recomlist">
+                                                    <th> 모델명 : {{recom.name}}</th><td>제조사 : {{recom.comp}} <input type="button" class="btn btn-write pull-right" ng-click="setting($index)" value="여기에 등록"/> </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="button" class="btn btn-write pull-right" ng-click="delete(item.id,item.images)" value="삭제" />
+                            <button type="button" class="btn btn-warning pull-right" onclick="history.back()">
+                                목록
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
         </div>

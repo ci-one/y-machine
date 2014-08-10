@@ -16,7 +16,7 @@
                     <div class="row clearfix">
                         <div class="col-md-12 column">
                             <div class="media"  ng-repeat='item in pagedItems[currentPage]'>
-                                <a href="#ym/product/new/{{item.id}}" class="pull-left"><img ng-src="images/newPro/item.images" class="img-thumbnail" alt=''
+                                <a href="#ym/product/new/{{item.id}}" class="pull-left"><img ng-src="images/newPro/201404091723059337553085966932.png" class="img-thumbnail" alt=''
                                                                    style="width:128px; height:100px;"/></a>
 
                                 <div class="media-body">
@@ -30,33 +30,22 @@
                         <div class="col-md-10 column">
                             <div class= "paginationcenter">
                                 <ul class="pagination" STYLE="WIDTH:3000PX;">
-                                    <li>
-                                        <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">4</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a>
-                                    </li>
-
+                                        <li ng-class="{disabled: currentPage == 0}">
+                                            <a href ng-click="prevPage()">« Prev</a>
+                                        </li>
+                                        <li ng-repeat="n in range(pagedItems.length)"
+                                            ng-class="{active: n == currentPage}"
+                                            ng-click="setPage()">
+                                            <a href ng-bind="n + 1"></a>
+                                        </li>
+                                        <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                                            <a href ng-click="nextPage()">Next »</a>
+                                        </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-2 column">
-                            <a href="#ym/product/used/write">
+                            <a href="#ym/product/new/write/{{select}}">
                                 <button type="button" class="btn btn-write pull-right">
                                     장비등록
                                 </button>

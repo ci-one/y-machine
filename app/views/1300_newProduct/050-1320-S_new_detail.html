@@ -35,21 +35,25 @@
                                             <table class="table table-bordered">
                                                 <tbody>
                                                 <tr>
-                                                    <th> name</th>
-                                                    <td> {{model.name}}</td>
-                                                    <th> option</th>
-                                                    <td> {{model.option}}</td>
+                                                    <th> 모델명 </th>
+                                                    <td colspan="3">
+                                                        <pre>{{model.name}}</pre>
+                                                    </td>
                                                 </tr>
-
-                                                </tbody>
+                                                <tr>
+                                                    <th> 옵션 </th>
+                                                    <td colspan="3">
+                                                        <pre>{{model.option}}</pre>
+                                                    </td>
+                                                </tr>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <h4><img src="images/menu_icon_01.png"> 첨부파일 </h4>
-                            <button type="button" class="btn btn-warning pull-right">
+                            <input type="button" class="btn btn-write pull-right" ng-click="delete(item.id,item.images)" value="삭제" />
+                            <button type="button" class="btn btn-warning pull-right" onclick="history.back()">
                                 목록
                             </button>
 

@@ -1,12 +1,10 @@
-<script src="scripts/controllers/costomerQ.js"></script>
-
 <div class="container cont01">
     <div class="row clearfix">
-
         <div class="col-md-offset-1 col-md-10 column col-md-offset-1">
             <h3>
-                <a href="#"><img src="images/menu_icon_01.png">고객문의</a>
+                <a href="#"><img src="images/menu_icon_01.png">중고장비문의</a>
             </h3>
+
             <div class="row clearfix">
                 <div class="container">
                     <div class="col-md-12 column">
@@ -22,9 +20,10 @@
                                         <input type="text" placeholder="문의사항 제목을 적어주세요"
                                                class="form-control" ng-model="item.title"
                                                autofocus="autofocus"/>
-                                    </div><div>{{title}}</div>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="row clearfix">
                                 <div class="col-md-12 column">
                                     <div class="col-md-6 column visible-md visible-lg myhalf">
@@ -35,7 +34,7 @@
 
                                             <div class="row clearfix"></div>
                                             <input type="text" placeholder="작성자 성함을 적어주세요"
-                                                   class="form-control myhalfinput"  ng-model="item.writer"/>
+                                                   class="form-control myhalfinput" ng-model="item.writer"/>
                                         </div>
                                         <div class="form-group ">
                                             <label for="usedInputCompany">업체명</label>
@@ -44,7 +43,7 @@
 
                                             <div class="row clearfix"></div>
                                             <input type="text" placeholder="업체명을 적어주세요"
-                                                   class="form-control myhalfinput"  ng-model="item.comp"/>
+                                                   class="form-control myhalfinput" ng-model="item.comp"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 column visible-md visible-lg myhalf" style="right:-10px;">
@@ -56,7 +55,7 @@
                                             <div class="row clearfix"></div>
                                             <input type="tel"
                                                    placeholder="연락처를 적어주세요. 적어주신 연락처로 연락드리겠습니다"
-                                                   class="form-control myhalfinput"  ng-model="item.contact"/>
+                                                   class="form-control myhalfinput" ng-model="item.contact"/>
                                         </div>
 
                                         <div class="form-group">
@@ -67,7 +66,7 @@
                                             <div class="row clearfix"></div>
                                             <input type="email"
                                                    placeholder="등록하시면 와이머신의 최신 홍보자료를 받으실 수 있습니다"
-                                                   class="form-control myhalfinput"  ng-model="item.email"/>
+                                                   class="form-control myhalfinput" ng-model="item.email"/>
                                         </div>
                                     </div>
 
@@ -79,7 +78,7 @@
 
                                             <div class="row clearfix"></div>
                                             <input type="text" placeholder="작성자 성함을 적어주세요"
-                                                   class="form-control"  ng-model="item.writer"/>
+                                                   class="form-control" ng-model="item.writer"/>
                                         </div>
                                         <div class="form-group ">
                                             <label for="usedInputCompany">업체명</label>
@@ -88,7 +87,7 @@
 
                                             <div class="row clearfix"></div>
                                             <input type="text" placeholder="업체명을 적어주세요"
-                                                   class="form-control"  ng-model="item.comp"/>
+                                                   class="form-control" ng-model="item.comp"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="usedInputCall">연락처</label>
@@ -98,7 +97,7 @@
                                             <div class="row clearfix"></div>
                                             <input type="tel"
                                                    placeholder="연락처를 적어주세요. 적어주신 연락처로 연락드리겠습니다"
-                                                   class="form-control"  ng-model="item.contact"/>
+                                                   class="form-control" ng-model="item.contact"/>
                                         </div>
 
                                         <div class="form-group">
@@ -107,7 +106,7 @@
                                             <div class="row clearfix"></div>
                                             <input type="email"
                                                    placeholder="이메일을 등록하시면 와이머신의 최신 홍보자료를 받으실 수 있습니다"
-                                                   class="form-control"  ng-model="item.email"/>
+                                                   class="form-control" ng-model="item.email"/>
                                         </div>
                                     </div>
                                 </div>
@@ -121,20 +120,54 @@
                                         <p class="help-block">*필수 항목입니다</p>
 
                                         <div class="row clearfix"></div>
-                                        <textarea rows="10" cols="" class="form-control"  ng-model="item.content"
+                                        <textarea rows="10" cols="" class="form-control" ng-model="item.content"
                                                   placeholder="문의사항을 적어주세요"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="usedInputFilelist">파일리스트</label>
+
+                                        <div class="row clearfix"></div>
+                                        <!--
+                                                                                <div class="myfilelist">
+                                                                                    <input type="file" multiple id="usedInputFile" ng-model="lists">
+                                                                                    <input type="button" ng-click="">
+                                                                                    <ul class="list-unstyled" ng-repeat="list in lists">
+                                                                                        <li> {{list}}</li>
+
+                                                                                    </ul>
+                                                                                </div>
+                                        -->
+                                        <div class="myfilelist">
+
+                                            <span ng-if="item.file==null"><input type="file"
+                                                                                 ng-file-select="onFileSelect($files)"></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="mywidth">
-                                    <button type="button" class="btn btn-primary pull-right" ng-click="insertProcess(item)">등 록</button>
+
+                                <button type="button" class="btn btn-primary pull-right" ng-click="insert(item)">등 록</button>
                             </div>
                         </form>
-
-                        <a href="#ym/request/new/list" class="btn btn-primary pull-right">목록보기</a>
+                        <a href="#ym/request/used/list" class="btn btn-primary pull-right">목록보기</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
+
+<script>
+
+    function fileList($scope) {
+        $scope.lists = [];
+        $scope.addNewList = function (newTitle) {
+            $scope.lists.push(newTitle);
+            $scope.newTitle = '';
+        }
+    }
+
+</script>

@@ -1,30 +1,28 @@
 <link href="styles/sub_07.css" rel="stylesheet">
-        <script src="scripts/controllers/costomerQ.js"></script>
-
+<script src="scripts/controllers/costomerQ.js"></script>
 
 <div class="container cont01">
     <div class="row clearfix">
-        <div class="col-md-offset-1 col-md-10 column col-md-offset-1" ng-controller="Costomer_Controller">
+        <div class="col-md-offset-1 col-md-10 column col-md-offset-1">
             <h3><img src="images/menu_icon_01.png"> 고객문의</h3>
             <table class="table table-bordered table-condensed">
                 <thead>
                 <tr>
-                    <th>작성일</th>
                     <th>제목</th>
+                    <th>업체명</th>
                     <th>작성자</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat='items in pagedItems[currentPage]'>
-                    <td class="tstyle">                            {{items.date}}</td>
-                    <td><a href="#ym/request/new/{{items.id}}"> {{items.content}} </a></td>
+                    <th class="tstyle"><a href="#ym/request/new/{{items.id}}"> {{items.title}}</a></th>
+                    <td> {{items.comp}} </td>
                     <td class="tstyle">                            {{items.writer}}</td>
                 </tr>
                 </tbody>
             </table>
             <td colspan="2">
                 <div class="pagination pull-right">
-                    <ul>
                         <li ng-class="{disabled: currentPage == 0}">
                             <a href ng-click="prevPage()">« Prev</a>
                         </li>
@@ -36,7 +34,6 @@
                         <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
                             <a href ng-click="nextPage()">Next »</a>
                         </li>
-                    </ul>
                 </div>
             </td>
         </div>
