@@ -1,6 +1,5 @@
 <link href="styles/gong_admin.css" rel="stylesheet">
-<script type="text/javascript" src="scripts/controllers/notice_temp_items.js">
-</script>
+
 
 <div class="container">
 <div class="row clearfix">
@@ -57,18 +56,12 @@
 </div>
 <div class="contents">
     <div class="row clearfix">
-        <div class="col-md-3 column">
+        <div class="col-md-3 column" ng-controller="Notice_Controller">
             <h3><a href="#ym/notice"><img src="images/menu_icon_01.png"> News &amp; Notice</a></h3>
             <span class="label label-warning pull-right"><a href="#ym/notice">더보기</a></span>
-            <ol class="list-unstyled well">
+            <ol class="list-unstyled well" ng-repeat="item in items">
                 <li>
-                    <a href="#ym/notice/detail">공작기계</a><span class="pull-right">2014-02-17</span>
-                </li>
-                <li>
-                    <a href="#ym/notice/detail">문의 관련 필독</a><span class="pull-right">2014-02-15</span>
-                </li>
-                <li>
-                    <a href="#ym/notice/detail">Y Machine</a><span class="pull-right">2014-02-14</span>
+                    <a href="#ym/notice/{{item.id}}">{{item.title}}</a><span class="pull-right">{{item.date}}</span>
                 </li>
             </ol>
         </div>
@@ -135,12 +128,12 @@
 </div>
 
 
-<!--<div class="btn-group pull-right">-->
+<div class="btn-group pull-right">
 <!-- Button trigger modal -->
 <!--메인이미지변경-->
-<!--<button class="btn btn-write" data-toggle="modal" data-target="#myModal">
+<button class="btn btn-write" data-toggle="modal" data-target="#myModal">
     메인이미지변경
-</button>-->
+</button>
 <!-- 메인이미지변경Modal -->
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -275,9 +268,9 @@
 </div>
 <!-- /.modal -->
 <!--홍보동영상 변경-->
-<!--<button class="btn btn-write" data-toggle="modal" data-target="#myModa2">
+<button class="btn btn-write" data-toggle="modal" data-target="#myModa2">
     홍보동영상 변경
-</button>-->
+</button>
 <!-- Modal -->
 <div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabe2" aria-hidden="true">
     <div class="modal-dialog">
