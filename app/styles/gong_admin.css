@@ -4,7 +4,7 @@
 
 body{padding-top:70px; padding-bottom:50px;}
 /*header*/
-.navbar{width:100%;}
+.navbar{width:100%; margin-bottom:0px;}
 
 .navbar-nav > li {
     float: left; margin-right:0;}
@@ -14,6 +14,7 @@ body{padding-top:70px; padding-bottom:50px;}
 
   }
 .nav-menu {margin-top:30px; margin-bottom:0;}
+
 
 
 .head-wrapper .nav li a{color:#222222; font-size:13px; font-weight:600; }

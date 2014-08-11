@@ -685,16 +685,22 @@ app.factory('customerService', function ($http, $q, $upload) {
     };
 
     customerService.insert = function (item) {
-        var deferred = $q.defer();
-        $http({
-            method: 'post',
-            url: '/customerInsert',
-            data: {title: item.title, writer: item.writer, comp: item.comp, contact: item.contact, email: item.email, content: item.content}
-        }).success(function (data) {
-                deferred.resolve(data);
-            }
-        );
-        return deferred.promise;
+        var input=confirm("등록하시겠습니까?");
+        if(input)
+        {
+            var deferred = $q.defer();
+            $http({
+                method: 'post',
+                url: '/customerInsert',
+                data: {title: item.title, writer: item.writer, comp: item.comp, contact: item.contact, email: item.email, content: item.content}
+            }).success(function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        } else {
+            alert("등록을 취소하였습니다");
+        }
     };
     return customerService;
 });

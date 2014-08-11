@@ -87,7 +87,7 @@ function Notice_Detail($scope, $routeParams, noticeService) {
             alert("삭제되었습니다")
             history.back();
         } else {
-            alert("취소되었습니다")
+
         }
     }
 }
@@ -141,7 +141,7 @@ function Notice_Update($scope, $routeParams, noticeService) {
                 history.back();
             })
         }else {
-            alert('수정입력이 취소되었습니다')
+
         }
     }
 }
