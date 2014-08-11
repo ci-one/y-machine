@@ -93,11 +93,15 @@ var mcModule = angular.module('mcApp')
                 if (result == 'success') {
                     $scope.role = true;
                     $scope.login = '로그아웃';
+                    history.back();
+                }else{
+                    $scope.login = '로그인';
+                    $scope.role = false;
                 }
             });
         };
         $scope.doLogoff = function () {
-            $scope.login_check('a','a');
+            $scope.login_check('a', 'a');
         }
 
     });
