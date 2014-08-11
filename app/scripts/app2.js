@@ -3,9 +3,10 @@ var app = angular.module('lsApp', [
     'ngRoute'
     , 'ui.bootstrap'
     , 'angularFileUpload'
+    , 'ngCookies'
 ]);
 
-app.config(function ($routeProvider, $locationProvider) {
+app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             redirectTo: '/lease'
@@ -15,11 +16,11 @@ app.config(function ($routeProvider, $locationProvider) {
             redirectTo: '/lease'
         }).when('/lease/fir', {
             templateUrl: '/views/5000_lease/050-5000-businessField1.html'
-        }) .when('/lease/thi', {
+        }).when('/lease/thi', {
             templateUrl: '/views/1200_company/050-1200-S_company.html'
-        }) .when('/lease/fou', {
+        }).when('/lease/fou', {
             templateUrl: '/views/1200_company/050-1200-S_company.html'
-        }) .when('/lease/introduce', {
+        }).when('/lease/introduce', {
             templateUrl: '/views/5000_lease/050-5000-introduce.html'
         }).when('/lease/direction', {
             templateUrl: '/views/5000_lease/050-5100-directions.html'
@@ -31,20 +32,38 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: '/views/5000_lease/050-5400-businessfield3.html'
         }).when('/lease/business4', {
             templateUrl: '/views/5000_lease/050-5500-businessfield4.html'
-        }).when('/lease/ask',{
-            templateUrl:'/views/5000_lease/050-5600-leasequestion.html',
+        }).when('/lease/ask', {
+            templateUrl: '/views/5000_lease/050-5600-leasequestion.html',
             controller: 'leaseAskWriteCtrl'
-        }).when('/lease/ask/write',{
-            templateUrl:'/views/5000_lease/050-5610-leasequestion_write.html',
+        }).when('/lease/ask/write', {
+            templateUrl: '/views/5000_lease/050-5610-leasequestion_write.html',
             controller: 'leaseAskWriteCtrl'
-        }).when('/lease/ask/list',{
-            templateUrl:'/views/5000_lease/050-5620-leasequestion_list.html',
+        }).when('/lease/ask/list', {
+            templateUrl: '/views/5000_lease/050-5620-leasequestion_list.html',
             controller: 'leaseAskListCtrl'
-        }).when('/lease/ask/:id',{
-            templateUrl:'/views/5000_lease/050-5630-leasequestion_detail.html',
+        }).when('/lease/ask/:id', {
+            templateUrl: '/views/5000_lease/050-5630-leasequestion_detail.html',
             controller: 'leaseAskViewCtrl'
         })
 
+});
+app.factory('loginService', function ($http, $q) {
+    var loginService = {};
+    loginService.idChk = function (id, pswd) {
+        var deferred = $q.defer();
+        $http({
+            url: '/idChk',
+            method: 'post',
+            data: {id: id, pswd: pswd}
+        }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (status) {
+            deferred.reject(status);
+        });
+
+        return deferred.promise;
+    };
+    return loginService;
 });
 
 app.factory('leaseQuestionService', function ($http, $q, $upload) {
