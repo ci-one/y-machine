@@ -12,9 +12,9 @@ function usedAskListCtrl($scope, machineQuestionService) {
     $scope.currentPage = 0;
 
     var getlist = function () {
-        machineQuestionService.list().then(function(result){
+        machineQuestionService.list().then(function (result) {
             $scope.items = result;
-        }).then(function(){
+        }).then(function () {
             var searchMatch = function (haystack, needle) {
                 if (!needle) {
                     return true;
@@ -72,7 +72,7 @@ function usedAskListCtrl($scope, machineQuestionService) {
 }
 
 function usedAskDetailCtrl($scope, $routeParams, machineQuestionService) {
-    machineQuestionService.one($routeParams.id).then(function(result){
+    machineQuestionService.one($routeParams.id).then(function (result) {
         $scope.item = result[0];
         var images = $scope.item.images.split('/');
         var images2 = [];
@@ -92,27 +92,33 @@ function usedAskWriteCtrl($scope, machineQuestionService) {
     };
 
     $scope.insert = function (item) {
-        var input = confirm("등록 하시겠습니까?");
-        if (input) {
-            if ($filess == null || $filess == '') {
-                var images = 'no file';
-                machineQuestionService.insert(item, images).then(function (data) {
-                    alert(data);
-                    item.title = '', item.content = '', item.writer = '', item.comp = '', item.email = '', item.contact = '';
-                });
-            } else {
-                machineQuestionService.insertF($filess).then(function (result) {
-                    var images = result;
+        if (item.title == null || item.writer == null||item.comp == null||item.contact == null||item.content == null|| item == null) {
+            alert("필수항목을 입력해 주세요");
+        } else {
+            var input = confirm("등록 하시겠습니까?");
+
+            if (input) {
+
+                if ($filess == null || $filess == '') {
+                    var images = 'no file';
                     machineQuestionService.insert(item, images).then(function (data) {
                         alert(data);
                         item.title = '', item.content = '', item.writer = '', item.comp = '', item.email = '', item.contact = '';
                     });
-                }, function () {
-                    alert('잘못된 등록이 발생하였습니다.')
-                });
+                } else {
+                    machineQuestionService.insertF($filess).then(function (result) {
+                        var images = result;
+                        machineQuestionService.insert(item, images).then(function (data) {
+                            alert(data);
+                            item.title = '', item.content = '', item.writer = '', item.comp = '', item.email = '', item.contact = '';
+                        });
+                    }, function () {
+                        alert('잘못된 등록이 발생하였습니다.')
+                    });
+                }
+            } else {
+
             }
-        } else {
-            alert('등록이 취소되었습니다')
         }
     }
 }

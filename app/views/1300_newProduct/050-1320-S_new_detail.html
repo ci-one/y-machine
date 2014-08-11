@@ -5,7 +5,7 @@
         <div class="row clearfix">
             <div class="col-sm-3 column">
                 <!-- side menu -->
-                <div ng-if="true" ng-include="'/views/sidebar1.html'" ></div>
+                <div ng-if="true" ng-include="'/views/sidebar1.html'"></div>
             </div>
             <div class="col-sm-9 column">
                 <!-- contents -->
@@ -17,11 +17,13 @@
                             <h3>{{item.name}}</h3>
                             <!--상세페이지-->
                             <h4><img src="images/menu_icon_01.png"> 장비이미지 </h4>
-                                <div ng-repeat="item in item_sorting">
-                                    <div class="item">
-                                        <img alt="" ng-src="images/newPro/{{item}}" style="width:847px; height:387px;"/>
-                                    </div>
+
+                            <div ng-repeat="item in item_sorting">
+                                <div class="item" style="width:643px; height:387px;">
+                                    <img alt="" ng-src="images/newPro/{{item}}"  style="width:643px; height:387px;"/>
                                 </div>
+                            </div>
+                            <div><br></div>
                             <h4><img src="images/menu_icon_01.png"> 모델리스트 </h4>
 
                             <div class="panel-group" id="panel-780726" ng-repeat="model in model_item">
@@ -35,13 +37,13 @@
                                             <table class="table table-bordered">
                                                 <tbody>
                                                 <tr>
-                                                    <th> 모델명 </th>
+                                                    <th> 모델명</th>
                                                     <td colspan="3">
                                                         <pre>{{model.name}}</pre>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th> 옵션 </th>
+                                                    <th> 옵션</th>
                                                     <td colspan="3">
                                                         <pre>{{model.option}}</pre>
                                                     </td>
@@ -52,7 +54,10 @@
                                 </div>
 
                             </div>
-                            <input type="button" class="btn btn-write pull-right" ng-click="delete(item.id,item.images)" value="삭제" />
+                            <div ng-if="role">
+                                <input type="button" class="btn btn-write pull-right"
+                                       ng-click="delete(item.id,item.images)" value="삭제"/>
+                            </div>
                             <button type="button" class="btn btn-warning pull-right" onclick="history.back()">
                                 목록
                             </button>

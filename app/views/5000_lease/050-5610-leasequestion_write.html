@@ -2,6 +2,8 @@
 </script>
 <link href="styles/customerqna_view.css" rel="stylesheet">
 
+<script src="scripts/controllers/lsQue.js"></script>
+
 <link href="styles/business.css" rel="stylesheet">
 <div class="row clearfix">
     <div class="banner">
@@ -10,7 +12,7 @@
 </div>
 
 
-<div class="container cont01" ng-controller=" ">
+<div class="container cont01" ng-controller="leaseAskWriteCtrl">
     <div class="row clearfix">
         <div class="col-md-offset-1 col-md-10 column col-md-offset-1">
             <h3>
@@ -65,7 +67,7 @@
                                             <p class="help-block">*필수 항목입니다</p>
 
                                             <div class="row clearfix"></div>
-                                            <input type="tel"
+                                            <input type="text"
                                                    placeholder="연락처를 적어주세요. 적어주신 연락처로 연락드리겠습니다"
                                                    class="form-control myhalfinput" ng-model="item.contact"/>
                                         </div>
@@ -136,32 +138,38 @@
                                                   placeholder="문의사항을 적어주세요"></textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="usedInputFilelist">파일리스트</label>
+                                    <!--
+                                <div class="form-group">
+                                    <label for="usedInputFilelist">파일리스트</label>
 
-                                        <div class="row clearfix"></div>
-                                        <!--
-                                                                                <div class="myfilelist">
-                                                                                    <input type="file" multiple id="usedInputFile" ng-model="lists">
-                                                                                    <input type="button" ng-click="">
-                                                                                    <ul class="list-unstyled" ng-repeat="list in lists">
-                                                                                        <li> {{list}}</li>
+                                    <div class="row clearfix"></div>
 
-                                                                                    </ul>
-                                                                                </div>
-                                        -->
+                                                                            <div class="myfilelist">
+                                                                                <input type="file" multiple id="usedInputFile" ng-model="lists">
+                                                                                <input type="button" ng-click="">
+                                                                                <ul class="list-unstyled" ng-repeat="list in lists">
+                                                                                    <li> {{list}}</li>
+
+                                                                                </ul>
+                                                                            </div>
+
                                         <div class="myfilelist">
 
                                         </div>
                                     </div>
+                                    -->
                                 </div>
                             </div>
                             <div class="mywidth">
 
-                                <button type="button" class="btn btn-primary pull-right" ng-click="insert(item)">등 록</button>
+                                <button type="button" class="btn btn-primary pull-right" ng-click="insert(item)">등 록
+                                </button>
                             </div>
                         </form>
-                        <a href="lease/#/lease/ask/list" class="btn btn-primary pull-right">목록보기</a>
+                        <div ng-if="role"><a href="lease/#/lease/ask/list" class="btn btn-primary pull-right">목록보기</a>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -169,6 +177,7 @@
     </div>
 
 </div>
+<div><br></div>
 
 <script>
 

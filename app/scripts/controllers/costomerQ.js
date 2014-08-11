@@ -84,9 +84,13 @@ function askDetailCtrl($scope, customerService, $routeParams) {
 
 function askWriteCtrl($scope, customerService) {
     $scope.insertProcess = function (item) {
-        customerService.insert(item).then(function (result) {
-            alert(result);
-            item.title = '', item.content = '', item.writer = '', item.comp = '', item.email = '', item.contact = '';
-        });
+        if (item.title == null||item.writer == null||item.comp == null||item.contact == null||item.content == null||item==null){
+            alert("필수항목을 입력해 주세요");
+        }else{
+            customerService.insert(item).then(function (result) {
+                alert(result);
+                item.title = '', item.content = '', item.writer = '', item.comp = '', item.email = '', item.contact = '';
+            });
+        }
     }
 }

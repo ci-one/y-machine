@@ -98,6 +98,7 @@ function Notice_Write($scope, noticeService) {
         $filess = $files;
     };
     $scope.insert = function () {
+
         var input = confirm("등록 하시겠습니까?");
         if (input) {
             if ($filess == null || $filess == '') {
@@ -122,8 +123,9 @@ function Notice_Write($scope, noticeService) {
                 });
             }
         } else {
-            alert('등록이 취소되었습니다')
+
         }
+
     };
 }
 function Notice_Update($scope, $routeParams, noticeService) {
@@ -140,7 +142,7 @@ function Notice_Update($scope, $routeParams, noticeService) {
                 alert(data);
                 history.back();
             })
-        }else {
+        } else {
 
         }
     }

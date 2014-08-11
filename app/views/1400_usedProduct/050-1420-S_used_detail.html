@@ -18,11 +18,13 @@
                             <h3>{{item.name}}</h3>
                             <!--상세페이지-->
                             <h4><img src="images/menu_icon_01.png"> 장비이미지 </h4>
+
                             <div ng-repeat="item in item_sorting">
-                                <div class="item">
-                                    <img alt="" ng-src="images/oldPro/{{item}}" style="width:847px; height:387px;"/>
+                                <div class="item"  style="width:643px; height:387px;">
+                                    <img alt="" ng-src="images/oldPro/{{item}}" style="width:643px; height:387px;"/>
                                 </div>
                             </div>
+                            <div><br></div>
                             <h4><img src="images/menu_icon_01.png"> 모델리스트 </h4>
 
                             <div class="panel-group" id="panel-780726" ng-repeat="model in model_item">
@@ -36,13 +38,13 @@
                                             <table class="table table-bordered">
                                                 <tbody>
                                                 <tr>
-                                                    <th> 모델명 </th>
+                                                    <th> 모델명</th>
                                                     <td colspan="3">
                                                         <pre>{{model.name}}</pre>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th> 옵션 </th>
+                                                    <th> 옵션</th>
                                                     <td colspan="3">
                                                         <pre>{{model.option}}</pre>
                                                     </td>
@@ -53,25 +55,37 @@
                                 </div>
                             </div>
                             <p>　</p>
-                            <div class="panel-group" id="settingrecomm">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <a class="panel-title collapsed" data-toggle="collapse"
-                                           data-parent="#settingrecomm" href="ym/product/used/#ad">추천상품 등록</a>
-                                    </div>
-                                    <div id="ad" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <table class="table table-bordered">
-                                                <tbody>
-                                                <tr ng-repeat="recom in recomlist">
-                                                    <th> 모델명 : {{recom.name}}</th><td>제조사 : {{recom.comp}} <input type="button" class="btn btn-write pull-right" ng-click="setting($index)" value="여기에 등록"/> </td>
-                                                </tr>
-                                            </table>
+
+                            <div ng-if="role">
+                                <div class="panel-group" id="settingrecomm">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a class="panel-title collapsed" data-toggle="collapse"
+                                               data-parent="#settingrecomm" href="ym/product/used/#ad">추천상품 등록</a>
+                                        </div>
+
+
+                                        <div id="ad" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                    <tr ng-repeat="recom in recomlist">
+                                                        <th> 모델명 : {{recom.name}}</th>
+                                                        <td>제조사 : {{recom.comp}} <input type="button"
+                                                                                        class="btn btn-write pull-right"
+                                                                                        ng-click="setting($index)"
+                                                                                        value="여기에 등록"/></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <input type="button" class="btn btn-write pull-right" ng-click="delete(item.id,item.images)" value="삭제" />
+                            <div ng-if="role">
+                                <input type="button" class="btn btn-write pull-right"
+                                       ng-click="delete(item.id,item.images)" value="삭제"/>
+                            </div>
                             <button type="button" class="btn btn-warning pull-right" onclick="history.back()">
                                 목록
                             </button>

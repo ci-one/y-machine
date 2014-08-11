@@ -5,7 +5,7 @@
 
         <div class="col-md-offset-1 col-md-10 column col-md-offset-1">
             <h3>
-                <a href="#"><img src="images/menu_icon_01.png">고객문의</a>
+                <a href=""><img src="images/menu_icon_01.png">고객문의</a>
             </h3>
             <div class="row clearfix">
                 <div class="container">
@@ -130,8 +130,9 @@
                                     <button type="button" class="btn btn-primary pull-right" ng-click="insertProcess(item)">등 록</button>
                             </div>
                         </form>
-
+                        <div ng-if="role">
                         <a href="#ym/request/new/list" class="btn btn-primary pull-right">목록보기</a>
+                            </div>
                     </div>
                 </div>
             </div>

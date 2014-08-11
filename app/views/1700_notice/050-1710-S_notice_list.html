@@ -4,7 +4,6 @@
 </script>
 
 
-
 <div class="container cont01"><!-- ng-app="listapp"-->
     <div class="row clearfix" ng-controller="Notice_Controller"><!-- ng-controller="listview" -->
         <div class="col-md-offset-1 col-md-10 column col-md-offset-1">
@@ -42,9 +41,11 @@
                     <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
                         <a href ng-click="nextPage()">Next »</a>
                     </li>
-            </div>
+                </div>
             </td>
-            <a href="#ym/notice/write" class="btn-primary btn button pull-center">작성</a>
+            <div ng-if="role">
+                <a href="#ym/notice/write" class="btn-primary btn button pull-center">작성</a>
+            </div>
         </div>
     </div>
 </div>

@@ -11,7 +11,7 @@
             <div class="col-sm-9 column">
                 <!-- contents -->
                 <div class="col-md-12 column">
-                    <h3><a href="#"><img src="images/menu_icon_01.png"> 신제품소개</a></h3>
+                    <h3><a href="#/ym/product/new/list"><img src="images/menu_icon_01.png"> 신제품소개</a></h3>
                     <!--신제품 리스트-->
                     <div class="row clearfix">
                         <div class="col-md-12 column">
@@ -44,12 +44,14 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-2 column">
-                            <a href="#ym/product/new/write/{{select}}">
-                                <button type="button" class="btn btn-write pull-right">
-                                    장비등록
-                                </button>
-                            </a>
+                        <div ng-if="role">
+                            <div class="col-md-2 column">
+                                <a href="#ym/product/new/write/{{select}}">
+                                    <button type="button" class="btn btn-write pull-right">
+                                        장비등록
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     </div>

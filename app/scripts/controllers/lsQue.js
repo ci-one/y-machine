@@ -90,27 +90,32 @@ function leaseAskWriteCtrl($scope, leaseQuestionService) {
     };
 
     $scope.insert = function (item) {
-        var input = confirm("등록 하시겠습니까?");
-        if (input) {
-            if ($filess == null || $filess == '') {
-                var images = 'no file';
-                leaseQuestionService.insert(item, images).then(function (data) {
-                    alert(data);
-                    item.title = '', item.content = '', item.writer = '', item.comp = '', item.email = '', item.contact = '';
-                });
-            } else {
-                leaseQuestionService.insertF($filess).then(function (result) {
-                    var images = result;
+
+        if (item.title == null || item.writer == null||item.comp == null||item.contact == null||item.content == null|| item == null) {
+            alert("필수항목을 입력해 주세요");
+        } else {
+            var input = confirm("등록 하시겠습니까?");
+            if (input) {
+                if ($filess == null || $filess == '') {
+                    var images = 'no file';
                     leaseQuestionService.insert(item, images).then(function (data) {
                         alert(data);
                         item.title = '', item.content = '', item.writer = '', item.comp = '', item.email = '', item.contact = '';
                     });
-                }, function () {
-                    alert('잘못된 등록이 발생하였습니다.')
-                });
+                } else {
+                    leaseQuestionService.insertF($filess).then(function (result) {
+                        var images = result;
+                        leaseQuestionService.insert(item, images).then(function (data) {
+                            alert(data);
+                            item.title = '', item.content = '', item.writer = '', item.comp = '', item.email = '', item.contact = '';
+                        });
+                    }, function () {
+                        alert('잘못된 등록이 발생하였습니다.')
+                    });
+                }
+            } else {
+
             }
-        } else {
-            alert('등록이 취소되었습니다')
         }
     }
 }
