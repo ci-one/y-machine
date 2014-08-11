@@ -1,8 +1,8 @@
 'use strict';
 
 
-var mcModule = angular.module('mcApp')
-    .controller('MainCtrl', function ($scope, $http, loginService) {
+angular.module('mcApp')
+    .controller('MainCtrl', function ($scope, $http, loginService, $cookieStore) {
         $http.get('/api/awesomeThings').success(function (awesomeThings) {
             $scope.awesomeThings = awesomeThings;
             $scope.ymMenuList = [
@@ -86,11 +86,20 @@ var mcModule = angular.module('mcApp')
                 {url: 'main2', name: '금융리스메인'}
             ];
         });
-        $scope.login = '로그인';
-        $scope.role = false;
+
+
+
+        if($cookieStore.get('role')=='true'){
+            $scope.role = true;
+            $scope.login = '로그아웃';
+        }else{
+            $scope.role = false;
+            $scope.login = '로그인';
+        }
         $scope.login_check = function (id, pswd) {
             loginService.idChk(id, pswd).then(function (result) {
                 if (result == 'success') {
+                    $cookieStore.put('role','true');
                     $scope.role = true;
                     $scope.login = '로그아웃';
                     history.back();

@@ -3,9 +3,10 @@ var app = angular.module('mcApp', [
     'ngRoute'
     , 'ui.bootstrap'
     , 'angularFileUpload'
+    , 'ngCookies'
 ]);
 
-app.config(function ($routeProvider, $locationProvider) {
+app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             redirectTo: '/ym'

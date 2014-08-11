@@ -1,8 +1,8 @@
 'use strict';
 
 
-var mcModule = angular.module('lsApp')
-    .controller('MainCtrl2', function ($scope, $http) {
+angular.module('lsApp')
+    .controller('MainCtrl2', function ($scope, $http,loginService, $cookieStore) {
         $http.get('/api/awesomeThings').success(function(awesomeThings) {
             $scope.awesomeThings = awesomeThings;
             $scope.lsMenuList = [
@@ -50,27 +50,28 @@ var mcModule = angular.module('lsApp')
                 , {url:'main2', name:'금융리스메인'}
             ];
         });
+
+        if($cookieStore.get('role')=='true'){
+            $scope.role = true;
+            $scope.login = '로그아웃';
+        }else{
+            $scope.role = false;
+            $scope.login = '로그인';
+        }
+        $scope.login_check = function (id, pswd) {
+            loginService.idChk(id, pswd).then(function (result) {
+                if (result == 'success') {
+                    $cookieStore.put('role','true');
+                    $scope.role = true;
+                    $scope.login = '로그아웃';
+                    history.back();
+                }else{
+                    $scope.login = '로그인';
+                    $scope.role = false;
+                }
+            });
+        };
+        $scope.doLogoff = function () {
+            $scope.login_check('a', 'a');
+        }
     });
-
-
-// 로그인 정보를 다루기 위한 서비스
-// factory is made for manipulating and showing login statue
-
-mcModule.factory('Accounts', function(){
-
-    var is_login = null;
-    var AccountName = "";
-
-    return {
-        setName: function(input) { AccountName = input;},
-        getName: function() { return AccountName; },
-        loginSuccess: function() { is_login = "Y"; },
-        logout: function() { is_login = null; },
-        is_login: function() { return is_login; }
-    };
-
-});
-
-/**
- * Created by wealab04 on 2014-08-08.
- */
