@@ -11,13 +11,8 @@ app.config(function ($routeProvider, $locationProvider) {
             redirectTo: '/ym'
         })
         .when('/ym', {
-            templateUrl: '/views/1100_main/050-1100-M_main.html'
-        })
-        .when('/ym/main2', {
-            templateUrl: '/views/2100_main/050-2100-M_main.html'
-        })
-        .when('/ym/main', {
-            redirectTo: '/ym'
+            templateUrl: '/views/1100_main/050-1100-M_main.html',
+            controller : 'newListCtrl'
         })
         .when('/ym/company', {
             templateUrl: '/views/1200_company/050-1200-S_company.html'
@@ -705,9 +700,9 @@ app.factory('customerService', function ($http, $q, $upload) {
 });
 
 app.factory('loginService', function ($http, $q) {
-    this.idChk = function (id, pswd) {
+    var loginService = {};
+    loginService.idChk = function (id, pswd) {
         var deferred = $q.defer();
-
         $http({
             url: '/idChk',
             method: 'post',
@@ -719,7 +714,8 @@ app.factory('loginService', function ($http, $q) {
         });
 
         return deferred.promise;
-    }
+    };
+    return loginService;
 });
 
 app.factory('oldRecommService', function ($http, $q) {

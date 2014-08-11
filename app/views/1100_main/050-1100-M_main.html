@@ -1,5 +1,5 @@
 <link href="styles/gong_admin.css" rel="stylesheet">
-
+<div>
 
 <div class="container">
 <div class="row clearfix">
@@ -56,13 +56,19 @@
 </div>
 <div class="contents">
     <div class="row clearfix">
-        <div class="col-md-3 column" ng-controller="Notice_Controller">
+        <div class="col-md-3 column">
             <h3><a href="#ym/notice"><img src="images/menu_icon_01.png"> News &amp; Notice</a></h3>
             <span class="label label-warning pull-right"><a href="#ym/notice">더보기</a></span>
-            <ol class="list-unstyled well" ng-repeat="item in items">
+
+            <ol class="list-unstyled well" ng-repeat="item in noticedata">
                 <li>
-                    <a href="#ym/notice/{{item.id}}">{{item.title}}</a><span class="pull-right">{{item.date}}</span>
-                </li>
+                    <a href="#ym/notice">공지사항게시판 입니다.</a>
+                </li><li>
+                <a href="#ym/notice">Y-machine 리뉴얼합니다!</a>
+            </li><li>
+                <a href="#ym/notice">공지사항 테스트게사판입니다</a>
+            </li>
+
             </ol>
         </div>
         <div class="col-md-3 column">
@@ -76,10 +82,10 @@
             </div>
         </div>
         <div class="col-md-3 column">
-            <h3><a href="#ym/product/used"><img src="images/menu_icon_01.png"> Used Product</a></h3>
+            <h3><a href="#ym/product/used/list"><img src="images/menu_icon_01.png"> Used Product</a></h3>
 
             <div class="media well">
-                <a href="#ym/product/used/detail" class="pull-left"><img src="images/b0385.png"
+                <a href="#ym/product/used/list" class="pull-left"><img src="images/b0385.png"
                                                                          class="media-object"
                                                                          alt=''/></a>
 
@@ -89,7 +95,7 @@
                 </div>
             </div>
             <div class="media well">
-                <a href="#ym/product/used/detail" class="pull-left"><img src="images/b0205-2.png"
+                <a href="#ym/product/used/list" class="pull-left"><img src="images/b0205-2.png"
                                                                          class="media-object" alt=''/></a>
 
                 <div class="media-body">
@@ -427,4 +433,4 @@
 </div>
 
 </div>
-</div>
+</div></div>

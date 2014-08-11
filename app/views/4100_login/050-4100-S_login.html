@@ -1,7 +1,5 @@
 <link href="styles/login.css" rel="stylesheet">
-<script src="scripts/controllers/accounts_temp.js" type="text/javascript"></script>
-
-<div class="container cont01" ng-controller="loginController">
+<div class="container cont01">
     <div class="row clearfix">
         <div class="container">
             <form class="form-signin">
@@ -9,7 +7,7 @@
                     <img src="images/menu_icon_01.png" alt="로그인페이지"> Y-machine 로그인</h2>
                 <input type="text" class="form-control" placeholder="아이디" ng-model="login_id">
                 <input type="password" class="form-control" placeholder="비밀번호" ng-model="login_pwd">
-                <button class="btn btn-lg btn-write btn-block" ng-click="login_check()">로그인</button>
+                <button class="btn btn-lg btn-write btn-block" ng-click="login_check(login_id,login_pwd)">로그인</button>
             </form>
         </div>
     </div>

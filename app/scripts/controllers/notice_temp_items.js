@@ -4,7 +4,6 @@
 
 
 
-
 function Notice_Controller($scope, noticeService) {
     $scope.itemsPerPage = 5;
     $scope.pagedItems = [];
