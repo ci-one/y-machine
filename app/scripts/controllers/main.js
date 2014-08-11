@@ -86,13 +86,18 @@ var mcModule = angular.module('mcApp')
                 {url: 'main2', name: '금융리스메인'}
             ];
         });
-
-        $scope.login_check = function (id,pswd) {
+        $scope.login = '로그인';
+        $scope.role = false;
+        $scope.login_check = function (id, pswd) {
             loginService.idChk(id, pswd).then(function (result) {
-                $scope.Access = result;
-                alert($scope.Access);
+                if (result == 'success') {
+                    $scope.role = true;
+                    $scope.login = '로그아웃';
+                }
             });
         };
-
+        $scope.doLogoff = function () {
+            $scope.login_check('a','a');
+        }
 
     });
