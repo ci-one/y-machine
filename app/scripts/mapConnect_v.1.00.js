@@ -11,7 +11,7 @@ oMap = new nhn.api.map.Map(document.getElementById('map'), {
     activateTrafficMap: false,
     activateBicycleMap: false,
     minMaxLevel: [ 1, 14 ],
-    size: new nhn.api.map.Size(800, 480)           });
+    size: new nhn.api.map.Size(350, 350)           });
 var oSlider = new nhn.api.map.ZoomControl();
 oMap.addControl(oSlider);
 oSlider.setPosition({
