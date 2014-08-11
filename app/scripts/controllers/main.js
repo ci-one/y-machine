@@ -110,6 +110,7 @@ angular.module('mcApp')
             });
         };
         $scope.doLogoff = function () {
+            $cookieStore.remove('role');
             $scope.login_check('a', 'a');
         }
 
