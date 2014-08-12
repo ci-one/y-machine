@@ -38,6 +38,9 @@ app.config(function ($routeProvider) {
             templateUrl: '/views/1300_newProduct/050-1310-S_new_list.html',
             controller: 'newListCtrl'
         })
+        .when('/ym/product/new/write', {
+            redirectTo:'/ym/product/new/write/0'
+        })
         .when('/ym/product/new/write/:id', {
             templateUrl: '/views/1300_newProduct/050-1330-S_new_write.html',
             controller: 'newWriteCtrl'
@@ -61,6 +64,9 @@ app.config(function ($routeProvider) {
         .when('/ym/product/used/list/:id', {
             templateUrl: '/views/1400_usedProduct/050-1410-S_used_list.html',
             controller: 'oldListCtrl'
+        })
+        .when('/ym/product/used/write', {
+            redirectTo:'/ym/product/used/write/0'
         })
         .when('/ym/product/used/write/:id', {
             templateUrl: '/views/1400_usedProduct/050-1430-S_used_write.html',

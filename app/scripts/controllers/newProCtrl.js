@@ -17,6 +17,9 @@ function newListCtrl($scope, newProductService, $routeParams) {
         if ($scope.select != null) {
             newProductService.list($scope.select).then(function (result) {
                 $scope.items = result;
+                for(i=0;i<result.length;i++){
+                    $scope.items[i].images = result[i].images.split('/')[0];
+                }
             }).then(function () {
                 var searchMatch = function (haystack, needle) {
                     if (!needle) {
@@ -72,6 +75,9 @@ function newListCtrl($scope, newProductService, $routeParams) {
         }else{
             newProductService.listall().then(function (result) {
                 $scope.items = result;
+                for(i=0;i<result.length;i++){
+                    $scope.items[i].images = result[i].images.split('/')[0];
+                }
             }).then(function () {
                 var searchMatch = function (haystack, needle) {
                     if (!needle) {

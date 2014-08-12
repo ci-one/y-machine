@@ -22,6 +22,9 @@ function oldListCtrl($scope, oldProductService, oldRecommService, $routeParams) 
         if ($scope.select != null) {
             oldProductService.list($scope.select).then(function (result) {
                 $scope.items = result;
+                for(i=0;i<result.length;i++){
+                    $scope.items[i].images = result[i].images.split('/')[0];
+                }
             }).then(function () {
                 var searchMatch = function (haystack, needle) {
                     if (!needle) {
@@ -77,6 +80,9 @@ function oldListCtrl($scope, oldProductService, oldRecommService, $routeParams) 
         } else {
             oldProductService.listall().then(function (result) {
                 $scope.items = result;
+                for(i=0;i<result.length;i++){
+                    $scope.items[i].images = result[i].images.split('/')[0];
+                }
             }).then(function () {
                 var searchMatch = function (haystack, needle) {
                     if (!needle) {
